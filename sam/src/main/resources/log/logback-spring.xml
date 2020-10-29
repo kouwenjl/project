@@ -164,15 +164,14 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="DEBUG_FILE"/>
     </logger>
-    <logger name="org.hibernate.SQL" level="debug" additivity="false">
-        <appender-ref ref="CONSOLE"/>
-<!--        <appender-ref ref="DEBUG_FILE"/>-->
-    </logger>
-    <logger name="org.hibernate.engine.QueryParameters" level="DEBUG" additivity="false"><appender-ref ref="CONSOLE"/></logger>
-    <logger name="org.hibernate.engine.query.HQLQueryPlan" level="DEBUG" additivity="false"><appender-ref ref="CONSOLE"/></logger>
-    <logger name="org.hibernate.type.descriptor.sql" level="TRACE" >
-        <appender-ref ref="CONSOLE"/>
-    </logger>
+
+    <!-- show parameters for hibernate sql 专为 Hibernate 定制 -->
+    <logger name="org.hibernate.type.descriptor.sql.BasicBinder"  level="trace" />
+    <logger name="org.hibernate.type.descriptor.sql.BasicExtractor"  level="trace" />
+
+    <logger name="org.hibernate.SQL" level="DEBUG"/>
+    <logger name="org.hibernate.engine.QueryParameters" level="DEBUG" />
+    <logger name="org.hibernate.engine.query.HQLQueryPlan" level="DEBUG" />
 
     <!--
     root与logger是父子关系，没有特别定义则默认为root，任何一个类只会和一个logger对应，
@@ -180,9 +179,9 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
     -->
     <root level="info">
         <appender-ref ref="CONSOLE"/>
-        <appender-ref ref="FILE"/>
-        <appender-ref ref="WARN_FILE"/>
-        <appender-ref ref="ERROR_FILE"/>
+<!--        <appender-ref ref="FILE"/>-->
+<!--        <appender-ref ref="WARN_FILE"/>-->
+<!--        <appender-ref ref="ERROR_FILE"/>-->
     </root>
 
     <!--debug 日志级别-->

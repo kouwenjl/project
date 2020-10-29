@@ -1,6 +1,8 @@
 package com.example.sam;
 
 
+
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.sam.jpa.OutSideUserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.logging.Log;
@@ -39,8 +41,12 @@ public class SamApplication {
         log.debug("--------hhahahahha ");
         log.info("----d-d--sds");
       System.out.println("数据库连接池是:"+dataSource.getClass());
-      for(OutSideUser outSideUser:outSideUserRepository.findAll(PageRequest.of(1,10))){
-          System.out.println(outSideUser);
-      };
+      Page<OutSideUser> outSideUserPage=new Page<>();
+      outSideUserPage.setSize(2);
+      outSideUserPage.setCurrent(1);
+      outSidUserDao.selectUsers(outSideUserPage);
+      System.out.println(outSideUserPage.getTotal());
+
+
   }
 }
