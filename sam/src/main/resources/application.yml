@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    druid:
+      username: ldyop
+      password: Ldyop123@ldygo.com
+      driver-class:
+      url: jdbc:mysql://10.91.19.30:3310/fpre?characterEncoding=utf-8&useSSL=false
+      max-active: 10
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      min-idle: 1
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath*:/com/example/sam/*.xml
+logging:
+ # level:
+ #  com.example.sam: debug
+  config:  classpath:log/logback-spring.xml
+
+
+
+
+
+
+
+
