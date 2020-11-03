@@ -12,6 +12,10 @@ spring:
     database: mysql
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     open-in-view: true
+  freemarker:
+    suffix: .html
+#  resources:
+#    static-locations:  classpath:/login.html
 
 mybatis-plus:
   configuration:
@@ -28,4 +32,14 @@ logging:
 
 
 
-
+#
+#shiro:
+server:
+  tomcat:
+    max-connections: 1
+#    threads:
+#      max:
+#  enabled: false
+#shiro:
+#  enabled:
+#  loginUrl:
