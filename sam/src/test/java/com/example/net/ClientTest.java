@@ -4,13 +4,17 @@ import java.net.Socket;
 
 public class ClientTest {
     public static void main(String[] args) throws Exception{
-        try {
-            Socket socket=new Socket("localhost",8080);
-            socket.getOutputStream().write("sss".getBytes());
-        }catch (Exception e){
+        String string=new String("ssaa");
+        System.out.println("\uDF00".codePointAt(0));
 
-        }
-        System.gc();
-        System.out.println();
+//        try {
+//            Socket socket=new Socket("localhost",8080);
+//            socket.getOutputStream().write("sss".getBytes());
+//        }catch (Exception e){
+//
+//        }
+//        System.gc();
+//        while (true)
+//        System.out.println();
     }
 }

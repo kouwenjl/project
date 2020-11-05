@@ -9,12 +9,14 @@ public class ServerTest {
         ServerSocket serverSocket=new ServerSocket(8080);
         Socket socket=serverSocket.accept();
         InputStream inputStream=socket.getInputStream();
+        socket.setSendBufferSize(4);
         byte[] data=new byte[1024];
         int readLength=0;
         while (true) {
             while ((readLength = inputStream.read(data)) > 0) {
                 System.out.println(new String(data,0,readLength));
             }
+            socket.getOutputStream().write("dd".getBytes());
         }
     }
 }
