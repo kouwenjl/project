@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="vue.js" type="text/javascript"> </script>
+    <title>Title</title>
+</head>
+<body>
+<div  id="dev">
+    <template></template>
+   <p pl></p> {{message}}
+</div>
+<script type="text/javascript">
+    var data={
+        message:'hello'
+    };
+    //Object.freeze(data); 不在进行双端绑定
+    var v=new Vue({
+        el:'#dev',
+        data:data
+    });
+    v.$watch('message',function (newValue,oldValue) {
+        alert(newValue+" "+oldValue);
+
+    })
+    data.message='hahah';
+</script>
+
+</body>
+</html>

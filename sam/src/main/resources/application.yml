@@ -43,3 +43,6 @@ server:
 #shiro:
 #  enabled:
 #  loginUrl:
+#dxs:
+#  a: 6
+jll: ${dxs.a:7}
