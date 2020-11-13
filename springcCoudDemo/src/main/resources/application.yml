@@ -1,0 +1,13 @@
+#spring:
+#  session:
+#    store-type: redis
+#    redis:
+#      flush-mode: on_save
+#      namespace: dxs
+#  redis:
+#    host: 192.168.1.102
+#    port: 6379
+server:
+  servlet:
+    session:
+      timeout: 30m
