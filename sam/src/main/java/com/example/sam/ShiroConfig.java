@@ -1,4 +1,5 @@
 package com.example.sam;
+import com.github.pagehelper.PageHelper;
 import org.apache.catalina.session.StandardSession;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -27,16 +28,25 @@ import javax.servlet.*;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionContext;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 @Configuration
 public class ShiroConfig {
    // TomcatWebServer
 //     Cookie cookie = ApplicationSessionCookieConfig.createSessionCookie(context, this.session.getIdInternal(), this.isSecure());
 //                                    this.response.addSessionCookieInternal(cookie);
+//   @Bean
+//   public PageHelper pageHelper() {
+//       System.out.println("MyBatisConfiguration.pageHelper()");
+//       PageHelper pageHelper = new PageHelper();
+//       Properties p = new Properties();
+//       p.setProperty("offsetAsPageNum", "true");
+//       p.setProperty("rowBoundsWithCount", "true");
+//       p.setProperty("reasonable", "true");
+//       pageHelper.setProperties(p);
+//       return pageHelper;
+//   }
+
     @Bean
     public  TextConfigurationRealm realm(){
         TextConfigurationRealm realm=new TextConfigurationRealm();
@@ -78,8 +88,8 @@ public class ShiroConfig {
         });
         shiroFilterFactoryBean.setFilters(filterMap);
         Map<String, String> urlMap = new LinkedHashMap<>();
-        urlMap.put("/dxs", "authc");
-        urlMap.put("/test","anon");
+        //urlMap.put("/dxs", "authc");
+        urlMap.put("/dxs","anon");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(urlMap);
         return shiroFilterFactoryBean;
     }

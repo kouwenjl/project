@@ -1,5 +1,6 @@
 package com.demo.spring;
 
+import com.demo.spring.agent.AgentTest;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -22,7 +23,8 @@ public class Application {
     @RequestMapping("/sessionTest")
     @ApiOperation(value = "获取demo", response = String.class)
     @ApiImplicitParams(@ApiImplicitParam(name = "测试", value = "sssp"))
-    public String test() {
-        return "sss";
+    public String test() throws Exception{
+        System.out.println(AgentTest.class.newInstance().point());;
+        return "Application.test";
     }
 }

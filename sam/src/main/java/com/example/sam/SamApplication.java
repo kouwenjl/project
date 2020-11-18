@@ -2,8 +2,11 @@ package com.example.sam;
 
 
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.example.sam.jpa.OutSideUserRepository;
+//import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+//import com.example.sam.jpa.OutSideUserRepository;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.catalina.Manager;
 import org.apache.commons.logging.Log;
@@ -19,7 +22,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+//import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,20 +30,19 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
+import java.util.List;
 
 
 @SpringBootApplication
 @ConfigurationPropertiesScan(basePackages = {"com.example.sam"})
 @MapperScan(basePackages = {"com.example.sam"})
 @Slf4j
-@EnableJpaRepositories
+//@EnableJpaRepositories
 @Controller
 @ServletComponentScan
 public class SamApplication {
     @Autowired
     OutSidUserDao outSidUserDao;
-    @Autowired
-    OutSideUserRepository outSideUserRepository;
     @Autowired
     DataSource dataSource;
     public static void main(String[] args) {
@@ -48,18 +50,14 @@ public class SamApplication {
     }
   @PostConstruct
     private void d(){
-//        org.slf4j.LoggerFactory.getLogger()
-        log.debug("--------hhahahahha ");
-        log.info("----d-d--sds");
-      System.out.println("数据库连接池是:"+dataSource.getClass());
-      Page<OutSideUser> outSideUserPage=new Page<>();
-      outSideUserPage.setSize(2);
-      outSideUserPage.setCurrent(1);
-      outSidUserDao.selectUsers(outSideUserPage);
-      System.out.println(outSideUserPage.getTotal());
+
   }
   @RequestMapping("/dxs")
     public void test(HttpServletRequest request){
+      PageHelper.startPage(1,2);
+      List<OutSideUser> list=outSidUserDao.selectUsers();
+      PageInfo pageInfo=new PageInfo(list);
+      System.out.println(66);
         System.out.println(6666);
       Subject subject= SecurityUtils.getSubject();
       System.out.println(subject.getSession().getId());

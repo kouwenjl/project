@@ -1,17 +1,17 @@
 package com.example.sam;
 
+import com.fasterxml.jackson.core.SerializableString;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import java.io.Serializable;
+
 
 @Data
-@Entity(name = "outside_users")
-public class OutSideUser {
-    @Id
+
+public class OutSideUser implements Serializable {
+
     private Integer id;
-    @Column
+
     private String userName;
 
 }

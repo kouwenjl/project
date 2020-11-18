@@ -1,1 +1,0 @@
-Premain-Class: com.demo.spring.agent.ByteBuddyAgentTest
