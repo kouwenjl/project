@@ -11,8 +11,3 @@ server:
   servlet:
     session:
       timeout: 30m
-hh: ss
-
-
-
-ff: hh

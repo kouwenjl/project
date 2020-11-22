@@ -17,6 +17,7 @@ import org.apache.shiro.subject.Subject;
 import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
@@ -45,13 +46,17 @@ public class SamApplication {
     OutSidUserDao outSidUserDao;
     @Autowired
     DataSource dataSource;
+    @Value("${jll}")
     public static void main(String[] args) {
+        System.out.println(System.getenv("ni"));
+
         SpringApplication.run(SamApplication.class, args);
     }
   @PostConstruct
     private void d(){
 
   }
+
   @RequestMapping("/dxs")
     public void test(HttpServletRequest request){
       PageHelper.startPage(1,2);
